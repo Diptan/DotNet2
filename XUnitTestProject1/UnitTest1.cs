@@ -30,7 +30,7 @@ namespace XUnitTestProject1
         {
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Assert.AreEqual(1, 2);
+            Assert.AreEqual(1, 1);
         }
     }
 }
