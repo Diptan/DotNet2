@@ -21,7 +21,7 @@ namespace XUnitTestProject1
             var ff = new RemoteWebDriver(new Uri("http://10.17.8.70:4444/wd/hub"), capabilities);
 
             ff.Navigate().GoToUrl("https://www.google.com");
-            ff.Close();
+            ff.Quit();
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
             Assert.AreEqual(1, 1);
@@ -35,7 +35,7 @@ namespace XUnitTestProject1
             var ff = new RemoteWebDriver(new Uri("http://10.17.8.70:4444/wd/hub"), capabilities);
 
             ff.Navigate().GoToUrl("https://www.google.com");
-            ff.Close();
+            ff.Quit();
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
             Assert.AreEqual(1, 1);
@@ -54,7 +54,7 @@ namespace XUnitTestProject1
             var ff = new RemoteWebDriver(new Uri("http://10.17.8.70:4444/wd/hub"), capabilities);
 
             ff.Navigate().GoToUrl("https://www.google.com");
-            ff.Close();
+            ff.Quit();
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
             Assert.AreEqual(1, 1);
@@ -68,7 +68,7 @@ namespace XUnitTestProject1
             var ff = new RemoteWebDriver(new Uri("http://10.17.8.70:4444/wd/hub"), capabilities);
 
             ff.Navigate().GoToUrl("https://www.google.com");
-            ff.Close();
+            ff.Quit();
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
             Assert.AreEqual(1, 1);
@@ -87,7 +87,7 @@ namespace XUnitTestProject1
             var ff = new RemoteWebDriver(new Uri("http://10.17.8.70:4444/wd/hub"), capabilities);
 
             ff.Navigate().GoToUrl("https://www.google.com");
-            ff.Close();
+            ff.Quit();
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
             Assert.AreEqual(1, 1);
@@ -101,7 +101,7 @@ namespace XUnitTestProject1
             var ff = new RemoteWebDriver(new Uri("http://10.17.8.70:4444/wd/hub"), capabilities);
 
             ff.Navigate().GoToUrl("https://www.google.com");
-            ff.Close();
+            ff.Quit();
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
             Assert.AreEqual(1, 1);
