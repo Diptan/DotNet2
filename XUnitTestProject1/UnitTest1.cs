@@ -14,20 +14,7 @@ namespace XUnitTestProject1
     public class UnitTest1
     {
         [Test]
-        public void Test1()
-        {
-            var capabilities = new DesiredCapabilities("firefox", "66.0", new Platform(PlatformType.Any));
-            var ff = new RemoteWebDriver(new Uri("http://10.17.8.70:4444/wd/hub"), capabilities);
-
-            ff.Navigate().GoToUrl("https://www.google.com");
-            ff.Close();
-            Console.WriteLine("Step 1");
-            Console.WriteLine("Step 2");
-            Assert.AreEqual(1, 1);
-        }
-
-        [Test]
-        public void Test2()
+        public void Test11()
         {
             var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
             var ff = new RemoteWebDriver(new Uri("http://10.17.8.70:4444/wd/hub"), capabilities);
@@ -39,35 +26,80 @@ namespace XUnitTestProject1
             Assert.AreEqual(1, 1);
         }
 
-        [Parallelizable]
-        [TestFixture]
-        public class UnitTest2
+        [Test]
+        public void Test12()
         {
-            [Test]
-            public void Test1()
-            {
-                var capabilities = new DesiredCapabilities("firefox", "66.0", new Platform(PlatformType.Any));
-                var ff = new RemoteWebDriver(new Uri("http://10.17.8.70:4444/wd/hub"), capabilities);
+            var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
+            var ff = new RemoteWebDriver(new Uri("http://10.17.8.70:4444/wd/hub"), capabilities);
 
-                ff.Navigate().GoToUrl("https://www.google.com");
-                ff.Close();
-                Console.WriteLine("Step 1");
-                Console.WriteLine("Step 2");
-                Assert.AreEqual(1, 1);
-            }
+            ff.Navigate().GoToUrl("https://www.google.com");
+            ff.Close();
+            Console.WriteLine("Step 1");
+            Console.WriteLine("Step 2");
+            Assert.AreEqual(1, 1);
+        }
 
-            [Test]
-            public void Test2()
-            {
-                var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
-                var ff = new RemoteWebDriver(new Uri("http://10.17.8.70:4444/wd/hub"), capabilities);
+    }
+    [Parallelizable]
+    [TestFixture]
+    public class UnitTest2
+    {
+        [Test]
+        public void Test21()
+        {
+            var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
+            var ff = new RemoteWebDriver(new Uri("http://10.17.8.70:4444/wd/hub"), capabilities);
 
-                ff.Navigate().GoToUrl("https://www.google.com");
-                ff.Close();
-                Console.WriteLine("Step 1");
-                Console.WriteLine("Step 2");
-                Assert.AreEqual(1, 1);
-            }
+            ff.Navigate().GoToUrl("https://www.google.com");
+            ff.Close();
+            Console.WriteLine("Step 1");
+            Console.WriteLine("Step 2");
+            Assert.AreEqual(1, 1);
+        }
+
+        [Test]
+        public void Test22()
+        {
+            var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
+            var ff = new RemoteWebDriver(new Uri("http://10.17.8.70:4444/wd/hub"), capabilities);
+
+            ff.Navigate().GoToUrl("https://www.google.com");
+            ff.Close();
+            Console.WriteLine("Step 1");
+            Console.WriteLine("Step 2");
+            Assert.AreEqual(1, 1);
+        }
+    }
+
+    [Parallelizable]
+    [TestFixture]
+    public class UnitTest3
+    {
+        [Test]
+        public void Test31()
+        {
+            var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
+            var ff = new RemoteWebDriver(new Uri("http://10.17.8.70:4444/wd/hub"), capabilities);
+
+            ff.Navigate().GoToUrl("https://www.google.com");
+            ff.Close();
+            Console.WriteLine("Step 1");
+            Console.WriteLine("Step 2");
+            Assert.AreEqual(1, 1);
+        }
+
+        [Test]
+        public void Test32()
+        {
+            var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
+            var ff = new RemoteWebDriver(new Uri("http://10.17.8.70:4444/wd/hub"), capabilities);
+
+            ff.Navigate().GoToUrl("https://www.google.com");
+            ff.Close();
+            Console.WriteLine("Step 1");
+            Console.WriteLine("Step 2");
+            Assert.AreEqual(1, 1);
         }
     }
 }
+
