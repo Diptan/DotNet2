@@ -2,10 +2,10 @@
   "$schema": "https://raw.githubusercontent.com/reportportal/agent-net-nunit/master/ReportPortal.NUnitExtension/ReportPortal.config.schema",
   "enabled": true,
   "server": {
-    "url": "http://gateway:8080/api/v1/",
+    "url": "http://10.17.11.107:8080/api/v1/",
     "project": "SUPERADMIN_PERSONAL",
     "authentication": {
-      "uuid": "f7ca27c1-6fed-4367-a35d-2e5935f7004b"
+      "uuid": "0f43cf96-bd00-4db8-9f1a-c15d7e0019f6"
     }
   },
   "launch": {
