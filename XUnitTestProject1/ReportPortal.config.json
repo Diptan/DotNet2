@@ -2,10 +2,10 @@
   "$schema": "https://raw.githubusercontent.com/reportportal/agent-net-nunit/master/ReportPortal.NUnitExtension/ReportPortal.config.schema",
   "enabled": true,
   "server": {
-    "url": "https://rp.epam.com/api/v1/",
+    "url": "http://10.17.11.107/api/v1/",
     "project": "MYKHAILO_DYPTAN_PERSONAL",
     "authentication": {
-      "uuid": "d74efa5d-dd0b-4ae1-a133-b26ae2b1ca5b"
+      "uuid": "0f43cf96-bd00-4db8-9f1a-c15d7e0019f6"
     }
   },
   "launch": {
