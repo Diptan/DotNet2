@@ -3,7 +3,7 @@
   "enabled": true,
   "server": {
     "url": "http://10.17.11.107/api/v1/",
-    "project": "MYKHAILO_DYPTAN_PERSONAL",
+    "project": "SUPERADMIN_PERSONAL",
     "authentication": {
       "uuid": "0f43cf96-bd00-4db8-9f1a-c15d7e0019f6"
     }
