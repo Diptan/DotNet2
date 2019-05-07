@@ -116,7 +116,7 @@ namespace XUnitTestProject1
             Console.WriteLine("Step 2");
             ff.GetScreenshot().SaveAsFile("test" + ".png", ScreenshotImageFormat.Png);
             var gg = Path.GetFullPath("test" + ".png");
-           // TestContext.AddTestAttachment(gg);
+            TestContext.AddTestAttachment(gg);
             Thread.Sleep(10000);
             ff.Quit();
             
