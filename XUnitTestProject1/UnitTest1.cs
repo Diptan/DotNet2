@@ -114,8 +114,8 @@ namespace XUnitTestProject1
             ff.Navigate().GoToUrl("https://www.google.com");
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            ff.GetScreenshot().SaveAsFile("test" + ".png", ScreenshotImageFormat.Png);
-            var gg = Path.GetFullPath("test" + ".png");
+            ff.GetScreenshot().SaveAsFile($"{TestContext.CurrentContext.Test.MethodName}_Error" + ".png", ScreenshotImageFormat.Png);
+            var gg = Path.GetFullPath($"{TestContext.CurrentContext.Test.MethodName}_Error" + ".png");
             TestContext.AddTestAttachment(gg);
             Thread.Sleep(10000);
             ff.Quit();
