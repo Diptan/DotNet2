@@ -125,6 +125,48 @@ namespace XUnitTestProject1
             
             Assert.AreEqual(1, 2);
         }
+        [Test]
+        public void Test33()
+        {
+            var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
+            capabilities.SetCapability("enableVNC", true);
+            capabilities.SetCapability("enableVideo", true);
+            capabilities.SetCapability("enableLog", true);
+            var ff = new RemoteWebDriver(new Uri("http://10.17.11.107:4444/wd/hub"), capabilities);
+
+            ff.Navigate().GoToUrl("https://www.google.com");
+            ff.Navigate().GoToUrl("https://portal.azure.com/");
+            Console.WriteLine("Step 1");
+            Console.WriteLine("Step 2");
+            ff.GetScreenshot().SaveAsFile($"{TestContext.CurrentContext.Test.MethodName}_Error" + ".png", ScreenshotImageFormat.Png);
+            var gg = Path.GetFullPath($"{TestContext.CurrentContext.Test.MethodName}_Error" + ".png");
+            TestContext.AddTestAttachment(gg);
+            Thread.Sleep(10000);
+            ff.Quit();
+
+            Assert.AreEqual(1, 2);
+        }
+        [Test]
+        public void Test34()
+        {
+            var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
+            capabilities.SetCapability("enableVNC", true);
+            capabilities.SetCapability("enableVideo", true);
+            capabilities.SetCapability("enableLog", true);
+            var ff = new RemoteWebDriver(new Uri("http://10.17.11.107:4444/wd/hub"), capabilities);
+
+            ff.Navigate().GoToUrl("https://www.google.com");
+            ff.Navigate().GoToUrl("https://portal.azure.com/");
+            Console.WriteLine("Step 1");
+            Console.WriteLine("Step 2");
+            ff.GetScreenshot().SaveAsFile($"{TestContext.CurrentContext.Test.MethodName}_Error" + ".png", ScreenshotImageFormat.Png);
+            var gg = Path.GetFullPath($"{TestContext.CurrentContext.Test.MethodName}_Error" + ".png");
+            TestContext.AddTestAttachment(gg);
+            Thread.Sleep(10000);
+            ff.Quit();
+
+            Assert.AreEqual(1, 2);
+        }
     }
 }
 
