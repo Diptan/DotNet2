@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -111,6 +112,9 @@ namespace XUnitTestProject1
             var ff = new RemoteWebDriver(new Uri("http://10.17.11.107:4444/wd/hub"), capabilities);
 
             ff.Navigate().GoToUrl("https://www.google.com");
+            ff.GetScreenshot().SaveAsFile("test" + ".png", ScreenshotImageFormat.Png);
+            var gg = Path.GetFullPath("test" + ".png");
+            TestContext.AddTestAttachment(gg);
             Thread.Sleep(10000);
             ff.Quit();
             Console.WriteLine("Step 1");
