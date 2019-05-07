@@ -119,7 +119,7 @@ namespace XUnitTestProject1
             ff.Quit();
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Assert.AreEqual(1, 1);
+            Assert.AreEqual(1, 2);
         }
     }
 }
