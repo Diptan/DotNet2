@@ -97,7 +97,7 @@ namespace XUnitTestProject1
             var ff = new RemoteWebDriver(new Uri("http://10.17.11.107:4444/wd/hub"), capabilities);
 
             ff.Navigate().GoToUrl("https://www.google.com");
-            Thread.Sleep(10000);
+            Thread.Sleep(40000);
             ff.Quit();
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
@@ -110,6 +110,7 @@ namespace XUnitTestProject1
             var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
             capabilities.SetCapability("enableVNC", true);
             capabilities.SetCapability("enableVideo", true);
+            capabilities.SetCapability("enableLog", true);
             var ff = new RemoteWebDriver(new Uri("http://10.17.11.107:4444/wd/hub"), capabilities);
 
             ff.Navigate().GoToUrl("https://www.google.com");
