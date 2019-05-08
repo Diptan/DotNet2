@@ -13,6 +13,7 @@
     <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
     <PackageReference Include="ReportPortal.NUnit" Version="3.7.1" />
     <PackageReference Include="ReportPortal.VSTest.TestLogger" Version="2.0.5" />
+    <PackageReference Include="RestSharp" Version="106.6.9" />
     <PackageReference Include="Selenium.Chrome.WebDriver" Version="73.0.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.12.0" />
     <PackageReference Include="xunit" Version="2.3.1" />

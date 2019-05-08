@@ -1,69 +1,46 @@
 using System;
-using System.IO;
 using System.Threading;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
-using Xunit;
 using Assert = NUnit.Framework.Assert;
 
 namespace XUnitTestProject1
 {
     [Parallelizable]
     [TestFixture]
-    public class UnitTest1
+    [TestFixture]
+    public class UnitTest1 : BaseTest
     {
         [Test]
         public void Test11()
         {
-            var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
-            capabilities.SetCapability("enableVNC", true);
-            var ff = new RemoteWebDriver(new Uri("http://10.17.11.107:4444/wd/hub"), capabilities);
-
-            ff.Navigate().GoToUrl("https://www.google.com");
+            Driver.Navigate().GoToUrl("https://www.google.com");
             Thread.Sleep(10000);
-            ff.Quit();
 
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
             Assert.AreEqual(1, 1);
         }
-
-
 
         [Test]
         public void Test12()
         {
-            var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
-            capabilities.SetCapability("enableVNC", true);
-            var ff = new RemoteWebDriver(new Uri("http://10.17.11.107:4444/wd/hub"), capabilities);
-
-            ff.Navigate().GoToUrl("https://www.google.com");
+            Driver.Navigate().GoToUrl("https://reportportal.io/");
             Thread.Sleep(10000);
-            ff.Quit();
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Assert.AreEqual(1, 1);
+            Assert.AreEqual(1, 2);
         }
     }
 
-
-
     [Parallelizable]
     [TestFixture]
-    public class UnitTest2
+    public class UnitTest2 : BaseTest
     {
         [Test]
         public void Test21()
         {
-            var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
-            capabilities.SetCapability("enableVNC", true);
-            var ff = new RemoteWebDriver(new Uri("http://10.17.11.107:4444/wd/hub"), capabilities);
-
-            ff.Navigate().GoToUrl("https://www.google.com");
+            Driver.Navigate().GoToUrl("https://www.google.com");
             Thread.Sleep(10000);
-            ff.Quit();
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
             Assert.AreEqual(1, 1);
@@ -72,13 +49,8 @@ namespace XUnitTestProject1
         [Test]
         public void Test22()
         {
-            var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
-            capabilities.SetCapability("enableVNC", true);
-            var ff = new RemoteWebDriver(new Uri("http://10.17.11.107:4444/wd/hub"), capabilities);
-
-            ff.Navigate().GoToUrl("https://www.google.com");
+            Driver.Navigate().GoToUrl("https://www.google.com");
             Thread.Sleep(10000);
-            ff.Quit();
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
             Assert.AreEqual(1, 1);
@@ -87,84 +59,35 @@ namespace XUnitTestProject1
 
     [Parallelizable]
     [TestFixture]
-    public class UnitTest3
+    public class UnitTest3 : BaseTest
     {
         [Test]
         public void Test31()
         {
-            var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
-            capabilities.SetCapability("enableVNC", true);
-            var ff = new RemoteWebDriver(new Uri("http://10.17.11.107:4444/wd/hub"), capabilities);
-
-            ff.Navigate().GoToUrl("https://www.google.com");
-            Thread.Sleep(40000);
-            ff.Quit();
+            Driver.Navigate().GoToUrl("https://www.google.com");
+            Thread.Sleep(10000);
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Assert.AreEqual(1, 2);
+            Assert.AreEqual(1, 1);
         }
 
         [Test]
         public void Test32()
         {
-            var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
-            capabilities.SetCapability("enableVNC", true);
-            capabilities.SetCapability("enableVideo", true);
-            capabilities.SetCapability("enableLog", true);
-            var ff = new RemoteWebDriver(new Uri("http://10.17.11.107:4444/wd/hub"), capabilities);
-
-            ff.Navigate().GoToUrl("https://www.google.com");
-            ff.Navigate().GoToUrl("https://portal.azure.com/");
+            Driver.Navigate().GoToUrl("https://www.google.com");
+            Thread.Sleep(10000);
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            ff.GetScreenshot().SaveAsFile($"{TestContext.CurrentContext.Test.MethodName}_Error" + ".png", ScreenshotImageFormat.Png);
-            var gg = Path.GetFullPath($"{TestContext.CurrentContext.Test.MethodName}_Error" + ".png");
-            TestContext.AddTestAttachment(gg);
-            Thread.Sleep(10000);
-            ff.Quit();
-            
-            Assert.AreEqual(1, 2);
+            Assert.AreEqual(1, 1);
         }
         [Test]
         public void Test33()
         {
-            var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
-            capabilities.SetCapability("enableVNC", true);
-            capabilities.SetCapability("enableVideo", true);
-            capabilities.SetCapability("enableLog", true);
-            var ff = new RemoteWebDriver(new Uri("http://10.17.11.107:4444/wd/hub"), capabilities);
-
-            ff.Navigate().GoToUrl("https://www.google.com");
-            ff.Navigate().GoToUrl("https://portal.azure.com/");
+            Driver.Navigate().GoToUrl("https://www.google.com");
+            Driver.Navigate().GoToUrl("https://portal.azure.com/");
+            Thread.Sleep(10000);
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            ff.GetScreenshot().SaveAsFile($"{TestContext.CurrentContext.Test.MethodName}_Error" + ".png", ScreenshotImageFormat.Png);
-            var gg = Path.GetFullPath($"{TestContext.CurrentContext.Test.MethodName}_Error" + ".png");
-            TestContext.AddTestAttachment(gg);
-            Thread.Sleep(10000);
-            ff.Quit();
-
-            Assert.AreEqual(1, 2);
-        }
-        [Test]
-        public void Test34()
-        {
-            var capabilities = new DesiredCapabilities("chrome", "73.0", new Platform(PlatformType.Any));
-            capabilities.SetCapability("enableVNC", true);
-            capabilities.SetCapability("enableVideo", true);
-            capabilities.SetCapability("enableLog", true);
-            var ff = new RemoteWebDriver(new Uri("http://10.17.11.107:4444/wd/hub"), capabilities);
-
-            ff.Navigate().GoToUrl("https://www.google.com");
-            ff.Navigate().GoToUrl("https://portal.azure.com/");
-            Console.WriteLine("Step 1");
-            Console.WriteLine("Step 2");
-            ff.GetScreenshot().SaveAsFile($"{TestContext.CurrentContext.Test.MethodName}_Error" + ".png", ScreenshotImageFormat.Png);
-            var gg = Path.GetFullPath($"{TestContext.CurrentContext.Test.MethodName}_Error" + ".png");
-            TestContext.AddTestAttachment(gg);
-            Thread.Sleep(10000);
-            ff.Quit();
-
             Assert.AreEqual(1, 2);
         }
     }
