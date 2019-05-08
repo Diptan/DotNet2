@@ -29,42 +29,58 @@ namespace XUnitTestProject1
         public void End()
         {
             var videoUrl = Driver.SessionId + ".mp4";
+            var client = new RestClient("http://10.17.11.107:4444/video/");
             //var videoUrl2 = "selenoid" + Driver.SessionId + ".mp4";
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
-                Driver.GetScreenshot().SaveAsFile($"{TestContext.CurrentContext.Test.MethodName}_Error" + ".png", ScreenshotImageFormat.Png);
-                var pathToScreenShot = Path.GetFullPath($"{TestContext.CurrentContext.Test.MethodName}_Error" + ".png");
-                TestContext.AddTestAttachment(pathToScreenShot);
+                TakeScreenShot();
+                Driver.Quit();
 
-                
+                DownloadVideoAndAttach(client, videoUrl);
+                DeleteFromSelenoid(client, videoUrl);
             }
 
-            Driver.Quit();
-           
-             var client = new RestClient("http://10.17.11.107:4444/video/");
-             var request = new RestRequest(videoUrl, Method.DELETE);
-             Thread.Sleep(2000);
+            Driver?.Quit();
 
-             var req = new RestRequest(videoUrl, Method.GET);
-             var gg = client.DownloadData(req);
-
-             using (Stream file = File.OpenWrite($"{TestContext.CurrentContext.Test.MethodName}_"+ videoUrl))
-             {
-                file.Write(gg, 0, gg.Length);
-             }
-
-             client.Execute(request);
-             var pathToVideo = Path.GetFullPath($"{TestContext.CurrentContext.Test.MethodName}_" + videoUrl);
-             TestContext.AddTestAttachment(pathToVideo);
+            if (TestContext.CurrentContext.Result.Outcome == ResultState.Success)
+            {
+                DeleteFromSelenoid(client, videoUrl);
+            }
         }
 
         public RemoteWebDriver Driver { get; set; }
 
 
-       
+        private void DeleteFromSelenoid(RestClient client, string videoName)
+        {
+            Thread.Sleep(2000);
+            var deleteFromSelenoidRequest = new RestRequest(videoName, Method.DELETE);
+            client.Execute(deleteFromSelenoidRequest);
+
+        }
+
+        public void DownloadVideoAndAttach(RestClient client, string videoName)
+        {
+            Thread.Sleep(2000);
+
+            var downloadVideo = new RestRequest(videoName, Method.GET);
+            var videoBytes = client.DownloadData(downloadVideo);
+
+            using (Stream file = File.OpenWrite($"{TestContext.CurrentContext.Test.MethodName}_" + videoName))
+            {
+                file.Write(videoBytes, 0, videoBytes.Length);
+            }
+
+            var pathToVideo = Path.GetFullPath($"{TestContext.CurrentContext.Test.MethodName}_" + videoName);
+
+            TestContext.AddTestAttachment(pathToVideo);
+        }
+
         private void TakeScreenShot()
         {
-          
+            var pathToScreenShot = $"{TestContext.CurrentContext.Test.MethodName}_" + DateTime.Now.ToString("_MM\\_dd\\_yyyy_h\\-mm_tt") + ".png";
+            Driver.GetScreenshot().SaveAsFile(pathToScreenShot, ScreenshotImageFormat.Png);
+            TestContext.AddTestAttachment(pathToScreenShot);
         }
     }
 }
