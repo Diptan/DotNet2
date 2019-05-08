@@ -29,7 +29,7 @@ namespace XUnitTestProject1
         public void End()
         {
             var videoUrl = Driver.SessionId + ".mp4";
-            var videoUrl2 = "selenoid" + Driver.SessionId + ".mp4";
+            //var videoUrl2 = "selenoid" + Driver.SessionId + ".mp4";
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 Driver.GetScreenshot().SaveAsFile($"{TestContext.CurrentContext.Test.MethodName}_Error" + ".png", ScreenshotImageFormat.Png);
@@ -40,28 +40,22 @@ namespace XUnitTestProject1
             }
 
             Driver.Quit();
-            if (TestContext.CurrentContext.Result.Outcome == ResultState.Success)
-            {
-                var client = new RestClient("http://10.17.11.107:4444/video/");
+           
+             var client = new RestClient("http://10.17.11.107:4444/video/");
+             var request = new RestRequest(videoUrl, Method.DELETE);
+             Thread.Sleep(2000);
 
-                var request = new RestRequest(videoUrl, Method.DELETE);
-                Thread.Sleep(5000);
+             var req = new RestRequest(videoUrl, Method.GET);
+             var gg = client.DownloadData(req);
 
-                var req = new RestRequest(videoUrl, Method.GET);
+             using (Stream file = File.OpenWrite($"{TestContext.CurrentContext.Test.MethodName}_"+ videoUrl))
+             {
+                file.Write(gg, 0, gg.Length);
+             }
 
-                var gg = client.DownloadData(req);
-
-                using (Stream file = File.OpenWrite($"{TestContext.CurrentContext.Test.MethodName}_"+ videoUrl))
-                {
-                    file.Write(gg, 0, gg.Length);
-                }
-
-                client.Execute(request);
-
-                var pathToVideo = Path.GetFullPath($"{TestContext.CurrentContext.Test.MethodName}_" + videoUrl);
-                TestContext.AddTestAttachment(pathToVideo);
-
-            }
+             client.Execute(request);
+             var pathToVideo = Path.GetFullPath($"{TestContext.CurrentContext.Test.MethodName}_" + videoUrl);
+             TestContext.AddTestAttachment(pathToVideo);
         }
 
         public RemoteWebDriver Driver { get; set; }
