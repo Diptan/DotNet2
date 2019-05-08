@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
+using System.Xml.Linq;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
@@ -28,53 +30,22 @@ namespace XUnitTestProject1
         [TearDown]
         public void End()
         {
-            var videoUrl = Driver.SessionId + ".mp4";
-            var client = new RestClient("http://10.17.11.107:4444/video/");
-            //var videoUrl2 = "selenoid" + Driver.SessionId + ".mp4";
+            var videoName = Driver.SessionId + ".mp4";
+            var selenoidClient = new SelenoidVideoHelper("http://10.17.11.107:4444/video/");
+
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 TakeScreenShot();
                 Driver.Quit();
+                selenoidClient.DownloadVideo(videoName);
 
-                DownloadVideoAndAttach(client, videoUrl);
-                DeleteFromSelenoid(client, videoUrl);
+                TestContext.AddTestAttachment(videoName);
             }
-
             Driver?.Quit();
-
-            if (TestContext.CurrentContext.Result.Outcome == ResultState.Success)
-            {
-                DeleteFromSelenoid(client, videoUrl);
-            }
+            selenoidClient.DeleteFromServer(videoName);
         }
 
         public RemoteWebDriver Driver { get; set; }
-
-
-        private void DeleteFromSelenoid(RestClient client, string videoName)
-        {
-            Thread.Sleep(2000);
-            var deleteFromSelenoidRequest = new RestRequest(videoName, Method.DELETE);
-            client.Execute(deleteFromSelenoidRequest);
-
-        }
-
-        public void DownloadVideoAndAttach(RestClient client, string videoName)
-        {
-            Thread.Sleep(2000);
-
-            var downloadVideo = new RestRequest(videoName, Method.GET);
-            var videoBytes = client.DownloadData(downloadVideo);
-
-            using (Stream file = File.OpenWrite($"{TestContext.CurrentContext.Test.MethodName}_" + videoName))
-            {
-                file.Write(videoBytes, 0, videoBytes.Length);
-            }
-
-            var pathToVideo = Path.GetFullPath($"{TestContext.CurrentContext.Test.MethodName}_" + videoName);
-
-            TestContext.AddTestAttachment(pathToVideo);
-        }
 
         private void TakeScreenShot()
         {
