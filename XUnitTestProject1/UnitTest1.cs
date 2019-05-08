@@ -14,7 +14,6 @@ namespace XUnitTestProject1
         public void Test11()
         {
             Driver.Navigate().GoToUrl("https://www.google.com");
-            Thread.Sleep(10000);
 
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
@@ -25,7 +24,6 @@ namespace XUnitTestProject1
         public void Test12()
         {
             Driver.Navigate().GoToUrl("https://reportportal.io/");
-            Thread.Sleep(10000);
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
             Assert.AreEqual(1, 2);
@@ -40,7 +38,6 @@ namespace XUnitTestProject1
         public void Test21()
         {
             Driver.Navigate().GoToUrl("https://www.google.com");
-            Thread.Sleep(10000);
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
             Assert.AreEqual(1, 1);
@@ -50,7 +47,6 @@ namespace XUnitTestProject1
         public void Test22()
         {
             Driver.Navigate().GoToUrl("https://www.google.com");
-            Thread.Sleep(10000);
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
             Assert.AreEqual(1, 1);
@@ -65,7 +61,6 @@ namespace XUnitTestProject1
         public void Test31()
         {
             Driver.Navigate().GoToUrl("https://www.google.com");
-            Thread.Sleep(10000);
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
             Assert.AreEqual(1, 1);
@@ -75,7 +70,6 @@ namespace XUnitTestProject1
         public void Test32()
         {
             Driver.Navigate().GoToUrl("https://www.google.com");
-            Thread.Sleep(10000);
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
             Assert.AreEqual(1, 1);
@@ -85,7 +79,6 @@ namespace XUnitTestProject1
         {
             Driver.Navigate().GoToUrl("https://www.google.com");
             Driver.Navigate().GoToUrl("https://portal.azure.com/");
-            Thread.Sleep(10000);
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
             Assert.AreEqual(1, 2);
