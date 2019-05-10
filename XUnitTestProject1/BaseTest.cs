@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
@@ -24,6 +25,7 @@ namespace XUnitTestProject1
             var videoName = Driver.SessionId + ".mp4";
             var selenoidClient = new SelenoidVideoHelper("http://10.17.11.107:4444/video/");
 
+            Thread.Sleep(2000);
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 TakeScreenShot();
