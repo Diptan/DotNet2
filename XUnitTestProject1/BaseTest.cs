@@ -25,7 +25,7 @@ namespace XUnitTestProject1
             var videoName = Driver.SessionId + ".mp4";
             var selenoidClient = new SelenoidVideoHelper("http://10.17.11.107:4444/video/");
 
-            Thread.Sleep(2000);
+            Thread.Sleep(500);
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 TakeScreenShot();
