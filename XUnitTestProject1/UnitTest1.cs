@@ -17,7 +17,7 @@ namespace XUnitTestProject1
 
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Assert.AreEqual(1, 2);
+            Assert.AreEqual("1", TestContext.Parameters["UI"]);
         }
 
         [Test]
@@ -26,7 +26,7 @@ namespace XUnitTestProject1
             Driver.Navigate().GoToUrl("https://reportportal.io/");
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Assert.AreEqual(1, 2);
+            Assert.AreEqual("1", TestContext.Parameters["UI"]);
         }
     }
 
@@ -40,7 +40,7 @@ namespace XUnitTestProject1
             Driver.Navigate().GoToUrl("https://www.google.com");
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Assert.AreEqual(1, 2);
+            Assert.AreEqual("1", TestContext.Parameters["UI"]);
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace XUnitTestProject1
             Driver.Navigate().GoToUrl("https://www.google.com");
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Assert.AreEqual(1, 2);
+            Assert.AreEqual("1", TestContext.Parameters["UI"]);
         }
     }
 
@@ -63,7 +63,7 @@ namespace XUnitTestProject1
             Driver.Navigate().GoToUrl("https://www.google.com");
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Assert.AreEqual(1, 2);
+            Assert.AreEqual("1", TestContext.Parameters["UI"]);
         }
 
         [Test]
@@ -72,7 +72,7 @@ namespace XUnitTestProject1
             Driver.Navigate().GoToUrl("https://www.google.com");
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Assert.AreEqual(1, 1);
+            Assert.AreEqual("1", TestContext.Parameters["UI"]);
         }
         [Test]
         public void Test33()
@@ -81,7 +81,7 @@ namespace XUnitTestProject1
             Driver.Navigate().GoToUrl("https://portal.azure.com/");
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Assert.AreEqual(1, 2);
+            Assert.AreEqual("1", TestContext.Parameters["UI"]);
         }
     }
 }
