@@ -40,7 +40,7 @@ namespace XUnitTestProject1
             Driver.Navigate().GoToUrl("https://www.google.com");
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Assert.AreEqual(1, 1);
+            Assert.AreEqual(1, 2);
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace XUnitTestProject1
             Driver.Navigate().GoToUrl("https://www.google.com");
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Assert.AreEqual(1, 1);
+            Assert.AreEqual(1, 2);
         }
     }
 
