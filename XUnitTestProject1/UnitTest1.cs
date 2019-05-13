@@ -1,12 +1,9 @@
 using System;
-using System.Threading;
 using NUnit.Framework;
 using Assert = NUnit.Framework.Assert;
 
 namespace XUnitTestProject1
 {
-    [Parallelizable]
-    [TestFixture]
     [TestFixture]
     public class UnitTest1 : BaseTest
     {
@@ -30,7 +27,6 @@ namespace XUnitTestProject1
         }
     }
 
-    [Parallelizable]
     [TestFixture]
     public class UnitTest2 : BaseTest
     {
@@ -53,7 +49,6 @@ namespace XUnitTestProject1
         }
     }
 
-    [Parallelizable]
     [TestFixture]
     public class UnitTest3 : BaseTest
     {
