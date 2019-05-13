@@ -5,6 +5,7 @@ using Assert = NUnit.Framework.Assert;
 
 namespace XUnitTestProject1
 {
+    [Parallelizable]
     [TestFixture]
     public class UnitTest1 : BaseTest
     {
@@ -29,7 +30,7 @@ namespace XUnitTestProject1
             Assert.AreEqual("1", TestContext.Parameters["UI"]);
         }
     }
-
+    [Parallelizable]
     [TestFixture]
     public class UnitTest2 : BaseTest
     {
@@ -53,7 +54,7 @@ namespace XUnitTestProject1
             Assert.AreEqual("1", TestContext.Parameters["UI"]);
         }
     }
-
+    [Parallelizable]
     [TestFixture]
     public class UnitTest3 : BaseTest
     {
