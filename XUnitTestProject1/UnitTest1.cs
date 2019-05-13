@@ -15,7 +15,7 @@ namespace XUnitTestProject1
 
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Thread.Sleep(3000);
+            Thread.Sleep(10000);
             Assert.AreEqual("1", TestContext.Parameters["UI"]);
         }
 
@@ -25,7 +25,7 @@ namespace XUnitTestProject1
             Driver.Navigate().GoToUrl("https://reportportal.io/");
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Thread.Sleep(3000);
+            Thread.Sleep(10000);
             Assert.AreEqual("1", TestContext.Parameters["UI"]);
         }
     }
@@ -39,7 +39,7 @@ namespace XUnitTestProject1
             Driver.Navigate().GoToUrl("https://www.google.com");
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Thread.Sleep(3000);
+            Thread.Sleep(10000);
             Assert.AreEqual("1", TestContext.Parameters["UI"]);
         }
 
@@ -49,7 +49,7 @@ namespace XUnitTestProject1
             Driver.Navigate().GoToUrl("https://www.google.com");
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Thread.Sleep(3000);
+            Thread.Sleep(10000);
             Assert.AreEqual("1", TestContext.Parameters["UI"]);
         }
     }
@@ -63,7 +63,7 @@ namespace XUnitTestProject1
             Driver.Navigate().GoToUrl("https://www.google.com");
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Thread.Sleep(3000);
+            Thread.Sleep(10000);
             Assert.AreEqual("1", TestContext.Parameters["UI"]);
         }
 
@@ -73,7 +73,7 @@ namespace XUnitTestProject1
             Driver.Navigate().GoToUrl("https://www.google.com");
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Thread.Sleep(3000);
+            Thread.Sleep(10000);
             Assert.AreEqual("1", TestContext.Parameters["UI"]);
         }
         [Test]
@@ -83,7 +83,7 @@ namespace XUnitTestProject1
             Driver.Navigate().GoToUrl("https://portal.azure.com/");
             Console.WriteLine("Step 1");
             Console.WriteLine("Step 2");
-            Thread.Sleep(3000);
+            Thread.Sleep(10000);
             Assert.AreEqual("1", TestContext.Parameters["UI"]);
         }
     }
