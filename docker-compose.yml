@@ -68,11 +68,11 @@ services:
     ports:
       - "8080:8080" # HTTP exposed
     command:
-      - --consulcatalog.endpoint=registry:8500
-      - --defaultEntryPoints=http
-      - --entryPoints=Name:http Address::8080
-      - --web
-      - --web.address=:8081
+      - '--consulcatalog.endpoint=registry:8500'
+      - '--defaultEntryPoints=http'
+      - '--entryPoints=Name:http Address::8080'
+      - '--web'
+      - '--web.address=:8081'
     restart: always
 
   index:
