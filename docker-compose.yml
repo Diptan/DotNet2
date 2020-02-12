@@ -1,20 +1,25 @@
+## You can generate a custom docker compose file automatically on http://reportportal.io/download (Step 2)
+
 ## This is example of Docker Compose for ReportPortal
 ## Do not forget to configure data volumes for production usage
 
-## Execute 'docker-compose -f docker-compose.yml -p reportportal up -d --force-recreate' --build
+## Execute 'docker-compose -f docker-compose-local.yml -p reportportal up -d --force-recreate' --build
 ## to start all containers in daemon mode
 ## Where:
-##      '-f docker-compose.yml' -- specifies this compose file
+##      '-f docker-compose-local.yml' -- specifies this compose file
 ##      '-p reportportal' -- specifies container's prefix (project name)
 ##      '-d' -- enables daemon mode
 ##      '--force-recreate' -- forces re-recreating of all containers
-
+##      '--build' -- build images before starting containers.
 version: '2.4'
 services:
 
-  settings-migration:
-    image: reportportal/settings-migration:latest
+  data-migration:
+    image: reportportal/data-migration:latest
+    #volumes:
+    #  - ./data/storage:/data/storage
     environment:
+      JAVA_OPTS: "-Xmx8g -Djava.security.egd=file:/dev/./urandom"
       # Postgres params
       RP_DB_HOST: postgres # Where PostgreSQL is hosted
       RP_DB_USER: rpuser   # User for reportportal db
@@ -22,14 +27,22 @@ services:
       RP_DB_NAME: reportportal # The name of reportportal db
       RP_DB_PORT: 5432 # PostgresSQL port
 
-      RP_LAUNCH_KEEPATTR: '6 months' # default config for new cleaning launches job. available values: '2 weeks', '1 month', '3 months',  '6 months'. Can be changed via UI further.
+      RP_POOL_COREPOOLSIZE: 8 # Depends on your processor type and amount of cores
+      RP_POOL_MAXPOOLSIZE: 14 # Should be higher than core pool size
+      RP_ITEMS_BATCH: 10000  # Count of processing items for each thread. A bigger number needs more RAM.
+      RP_DATASOURCE_MAXIMUMPOOLSIZE: 24 # Size of connections to Postgres. Should be higher that core pool size
+
+      # Datastorage params
       RP_BINARYSTORE_TYPE: minio
       RP_BINARYSTORE_MINIO_ENDPOINT: http://minio:9000
       RP_BINARYSTORE_MINIO_ACCESSKEY: minio
       RP_BINARYSTORE_MINIO_SECRETKEY: minio123
 
-      ## Users last login date older than ISO_LOCAL_DATE (yyyy-MM-dd) will not migrate
-      RP_USER_KEEPFROM: '2000-01-01'
+      # Data older than dates below will not migrate. ISO_LOCAL_DATE (yyyy-MM-dd)
+      RP_LAUNCH_KEEPFROM: '2000-01-01'
+      RP_TEST_KEEPFROM: '2000-01-01'
+      RP_LOG_KEEPFROM: '2000-01-01'
+      RP_ATTACH_KEEPFROM: '2000-01-01'
 
       # Mongodb params
       RP_MONGODB_DATABASE: reportportal
