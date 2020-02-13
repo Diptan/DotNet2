@@ -1,36 +1,34 @@
-## This is example of Docker Compose for ReportPortal
-## Do not forget to configure data volumes for production usage
-
-## Execute 'docker-compose -f docker-compose.yml -p reportportal up -d --force-recreate' --build
-## to start all containers in daemon mode
-## Where:
-##      '-f docker-compose.yml' -- specifies this compose file
-##      '-p reportportal' -- specifies container's prefix (project name)
-##      '-d' -- enables daemon mode
-##      '--force-recreate' -- forces re-recreating of all containers
-
-version: '2.4'
-services:
-
-  settings-migration:
-    image: reportportal/settings-migration:latest
+data-migration:
+    image: reportportal/data-migration:latest
+    #volumes:
+    #  - ./data/storage:/data/storage
     environment:
+      JAVA_OPTS: "-Xmx8g -Djava.security.egd=file:/dev/./urandom"
       # Postgres params
       RP_DB_HOST: postgres # Where PostgreSQL is hosted
       RP_DB_USER: rpuser   # User for reportportal db
       RP_DB_PASS: rppass   # Password for reportportal db
       RP_DB_NAME: reportportal # The name of reportportal db
       RP_DB_PORT: 5432 # PostgresSQL port
+      RP_POOL_COREPOOLSIZE: 8 # Depends on your processor type and amount of cores
+      RP_POOL_MAXPOOLSIZE: 14 # Should be higher than core pool size
+      RP_ITEMS_BATCH: 10000  # Count of processing items for each thread. A bigger number needs more RAM. 
+      RP_DATASOURCE_MAXIMUMPOOLSIZE: 24 # Size of connections to Postgres. Should be higher that core pool size
 
-      RP_LAUNCH_KEEPATTR: '6 months' # default config for new cleaning launches job. available values: '2 weeks', '1 month', '3 months',  '6 months'. Can be changed via UI further.
+      # Api container binarystore path
+      # RP_BINARYSTORE_CONTAINER_PATH: /data/storage
+      # RP_BINARYSTORE_PATH: /data/storage
+
       RP_BINARYSTORE_TYPE: minio
       RP_BINARYSTORE_MINIO_ENDPOINT: http://minio:9000
       RP_BINARYSTORE_MINIO_ACCESSKEY: minio
       RP_BINARYSTORE_MINIO_SECRETKEY: minio123
 
-      ## Users last login date older than ISO_LOCAL_DATE (yyyy-MM-dd) will not migrate
-      RP_USER_KEEPFROM: '2000-01-01'
+      # Data older than dates below will not migrate. ISO_LOCAL_DATE (yyyy-MM-dd)
+      RP_LAUNCH_KEEPFROM: '2000-01-01'     # Keep launches from date in ISO_LOCAL_DATE (yyyy-MM-dd)
+      RP_TEST_KEEPFROM: '2000-01-01'       # Keep test from date in ISO_LOCAL_DATE (yyyy-MM-dd). Example: '2000-01-01'
+      RP_LOG_KEEPFROM: '2000-01-01'        # Keep logs from date in ISO_LOCAL_DATE (yyyy-MM-dd). Example: '2000-01-01'
+      RP_ATTACH_KEEPFROM: '2000-01-01'     # Keep attachments from date in ISO_LOCAL_DATE (yyyy-MM-dd). Example: '2000-01-01'
 
-      # Mongodb params
-      RP_MONGODB_DATABASE: reportportal
-      RP_MONGODB_URI: mongodb://user:password@host:port
+      # Mongo params
+      RP_MONGODB_URI: mongodb://user:password@host:port/database_name
