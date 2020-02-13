@@ -33,4 +33,4 @@ services:
 
       # Mongodb params
       RP_MONGODB_DATABASE: reportportal
-      RP_MONGODB_URI: mongodb://user:password@host:port
+      RP_MONGODB_URI: mongodb://user:password@host:port/database_name
