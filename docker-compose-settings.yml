@@ -1,0 +1,27 @@
+settings-migration:
+    image: reportportal/settings-migration:latest
+    environment:
+      # Postgres params
+      RP_DB_HOST: postgres # Where PostgreSQL is hosted
+      RP_DB_USER: rpuser   # User for reportportal db
+      RP_DB_PASS: rppass   # Password for reportportal db
+      RP_DB_NAME: reportportal # The name of reportportal db
+      RP_DB_PORT: 5432 # PostgresSQL port
+
+      # Datastorage params
+      RP_BINARYSTORE_TYPE: minio
+      RP_BINARYSTORE_MINIO_ENDPOINT: http://minio:9000
+      RP_BINARYSTORE_MINIO_ACCESSKEY: minio
+      RP_BINARYSTORE_MINIO_SECRETKEY: minio123
+
+      ## Keep users from last login date in ISO_LOCAL_DATE (yyyy-MM-dd)
+      RP_USER_KEEPFROM: '2000-01-01'
+      
+      # RP_LAUNCH_KEEPATTR: 'forever' # default config for new cleaning launches job. available values: '2 weeks', '1 month', '3 months', '6 months'. Can be changed via UI further. 
+      # Mongodb params
+      RP_MONGODB_URI: mongodb://user:password@host:port/database_name
+      # RP_DATASOURCE_MAXIMUMPOOLSIZE=   #  |Connections opened to the server|
+      # RP_POOL_COREPOOLSIZE=6           #  |Core pool size of service task executor. Default 6|
+      # RP_POOL_MAXPOOLSIZE=8            #  |Max pool size of service task executor. Default 8 |
+      # RP_BINARYSTORE_PATH=             #  |Only for filesystem type. Path inside settings-migration container for storing data. It should be mapped to the filesystem outside docker, so the api can be mapped on the same directory to find files|
+      # RP_BINARYSTORE_CONATINER_PATH=   #  |Only for filesystem type. Path inside api container. This path is stored in database. Should be equals to RP_BINARYSTORE_PATH in api service|
